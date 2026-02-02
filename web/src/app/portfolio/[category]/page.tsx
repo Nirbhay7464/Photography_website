@@ -1,3 +1,6 @@
+// This tells Vercel to check for new Sanity data every 60 seconds
+export const revalidate = 60;
+
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Gallery from "@/components/Gallery";
