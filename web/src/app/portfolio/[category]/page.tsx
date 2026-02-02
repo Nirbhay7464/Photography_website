@@ -50,31 +50,43 @@ export async function generateMetadata(
 /* ============================
    PAGE COMPONENT (FIXED)
 ============================ */
-export default async function PortfolioCategoryPage({
-  params,
-}: PageProps) {
+export default async function PortfolioCategoryPage({ params }: PageProps) {
   const { category } = await params;
 
   if (!categoryMeta[category]) {
     notFound();
   }
 
+  // FETCH DATA FROM SANITY HERE
+  const query = `*[_type == "gallery" && category == $category] | order(_createdAt desc) {
+    _id,
+    title,
+    category,
+    "mainImage": mainImage.asset->url,
+    videoUrl
+  }`;
+  
+  const sanityData = await client.fetch(query, { category });
+
   const { title, description } = categoryMeta[category];
 
- // Inside your PortfolioCategoryPage component
-return (
-  <main className="pt-20 bg-black min-h-screen">
-    <section className="max-w-7xl mx-auto px-6 mb-16">
-      <h1 className="text-5xl md:text-7xl font-serif italic text-white mb-4">
-        {title}
-      </h1>
-      <p className="text-gray-500 max-w-2xl border-l border-[#D4AF37] pl-6">
-        {description}
-      </p>
-    </section>
+  return (
+    <main className="pt-20 bg-black min-h-screen">
+      <section className="max-w-7xl mx-auto px-6 mb-16">
+        <h1 className="text-5xl md:text-7xl font-serif italic text-white mb-4">
+          {title}
+        </h1>
+        <p className="text-gray-500 max-w-2xl border-l border-[#D4AF37] pl-6">
+          {description}
+        </p>
+      </section>
 
-    {/* This will now show ONLY the images because hideTabs is true */}
-    <Gallery initialCategory={category} hideTabs={true} />
-  </main>
-);
+      {/* Pass the fetched Sanity data to your Gallery component */}
+      <Gallery 
+        initialCategory={category} 
+        initialData={sanityData} 
+        hideTabs={true} 
+      />
+    </main>
+  );
 }

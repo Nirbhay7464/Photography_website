@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Play, X, Sparkles, MoveRight } from "lucide-react";
 
+
+
 // Helper to fix YouTube/Vimeo URLs for the iframe
 const getEmbedUrl = (url: string) => {
   if (!url) return "";
