@@ -20,15 +20,16 @@ const Hero = () => {
       className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden bg-black"
     >
       
-      {/* Background */}
+      {/* Background - FIXED: Combined both style props into one */}
       <motion.div
-        style={{ scale: backgroundScale, opacity: opacityFade }}
         initial={{ scale: 1.5, opacity: 0 }}
         animate={{ scale: 1.1, opacity: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
         className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url(https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e)",
+        style={{ 
+          scale: backgroundScale, 
+          opacity: opacityFade,
+          backgroundImage: "url(https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e)" 
         }}
       />
 
@@ -44,7 +45,7 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="block text-xs md:text-sm uppercase text-white/70 mb-4 tracking-[0.3em] font-light"
         >
-          Based in New York — Available Worldwide
+          Based in Amravati — Available Worldwide
         </motion.span>
 
         <h1 className="text-5xl md:text-8xl font-serif italic text-white leading-[1.1] mb-8">
@@ -116,15 +117,13 @@ const Hero = () => {
           viewBox="0 0 1200 120" 
           preserveAspectRatio="none"
         >
-          {/* Use the same color as your next section background (usually #111 or black) */}
           <path 
             d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-            className="fill-black" // Adjust fill to match next section
+            className="fill-black"
           ></path>
         </svg>
       </div>
 
-      {/* Scroll Indicator (Moved up slightly to clear the curve) */}
       <motion.div 
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
