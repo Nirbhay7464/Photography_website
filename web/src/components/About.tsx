@@ -15,7 +15,7 @@ const About = () => {
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -26,7 +26,6 @@ const About = () => {
     x.set(xPct);
     y.set(yPct);
   };
-
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
