@@ -12,9 +12,6 @@ const nextConfig: NextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
-    // ADD THIS LINE TO FIX THE "PRIVATE IP" ERROR:
-    dangerouslyAllowSVG: true, 
-    unoptimized: true, 
   },
 };
 
