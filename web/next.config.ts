@@ -1,20 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'cdn.sanity.io',
       },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
     ],
-    // ADD THIS LINE TO FIX THE "PRIVATE IP" ERROR:
-    dangerouslyAllowSVG: true, 
-    unoptimized: true, 
   },
 };
 
